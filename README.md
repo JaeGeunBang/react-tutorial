@@ -1,1 +1,1 @@
-# react-tutorial
+# typescript-tutorial
