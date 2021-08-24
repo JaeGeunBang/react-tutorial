@@ -1,9 +1,33 @@
 # typescript-tutorial
 
+## typescript 란?
+javascript에 타입 기능이 추가된 버전으로 typescript에 `타입 기능을 사용하지 않는다면 javascript와 동일`하다.
+
+### 타입의 필요성?
+코드를 작성한 쪽과 사용하는 쪽에 커뮤니케이션을 위해 타입을 사용한다.
+```js
+function makePerson(name, age){} // 해당 함수에서 에러가 발생하면 오류의 원인을 찾기 힘들다.
+function makePerson(name: string, age: number) {}
+```
+타입을 통해 타입 스크립트 컴파일러는 문제의 원인이 어디에 있는지 친절하게 알려주기 때문에 코드를 좀더 수월하게 작성할수 있다.
+
+
+
 ## 설치
 ```
 npm install -g typescript
 ```
+
+npm? (node package manager)
+- npm이라는 것은 Node.js로 만들어진 pakage(module)을 관리해주는 툴. 
+- 즉, Node.js로 만들어진 모듈을 웹에서 받아서 설치하고 관리해주는 프로그램
+
+npm으로 프로젝트를 만들면 package.json 파일이 만들어지는데,
+- "scripts"는 run 명령어를 통해서 실행할 것을 의 
+- "dependencies"의 경우는 설치할 모듈들을 의미
+
+> Yarn?
+>> Yarn도 npm과 같이 javascript 패키지 관리를 해주는툴로써, npm 보다 성능이나 보안 측면에서 더 좋은듯 하다.
 
 ## 프로젝트 생성 및 컴파일
 ```
