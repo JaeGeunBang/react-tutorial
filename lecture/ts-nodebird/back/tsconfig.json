@@ -95,6 +95,8 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "typeRoots": ["./types"]
+  },
+  /*"files": ["./index.ts", "./types/index.d.ts"] /* 어떤 파일만 컴파일만 할지 결정할수 있다. index.ts 내 있는 import 파일들은 모두 컴파일 한다. */
 }
