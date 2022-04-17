@@ -50,6 +50,21 @@ const requestOption = {
     }
 ```
 
+일반 oauth2 방식
+- header에 Authorization을 추가한다.
+- Basic `Base64(client id:client_secret)`
+
+```js
+const body2 = "access_token=" + JSON.parse(result).access_token;
+const headers2 = {'content-type' : 'application/x-www-form-urlencoded', 'Authorization': 'Basic dGVzdDoxMjM0'}
+const requestOption2 = {
+        method: 'POST',
+        uri: 'https://www.googleapis.com/oauth2/v1/tokeninfo',
+        headers: headers2,
+        body: body2
+    }
+```
+
 4. Token을 통해 사용자 정보 가져오기
 - 받환받은 Token을 통해 사용자 정보를 가져올수 있다.
 
@@ -63,6 +78,21 @@ const requestOption2 = {
         headers: headers2,
         body: body2
     }
+```
+
+일반 oauth2 방식
+- GET 요청으로 보낼땐, header에 Authorization을 추가해준다.
+
+필요한 body, header
+```js
+const authorization: string = `Bearer ${JSON.parse(result).access_token}`
+    const result2 = await axios.get('http://localhost:8080/api/v1/oauth2/me',{
+        headers: {
+            Authorization: authorization
+        }
+    })
+    res.send({'email': result2.data.email})
+
 ```
 
 5. Token 재발급
