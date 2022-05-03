@@ -52,21 +52,27 @@ const requestOption = {
 
 일반 oauth2 방식
 - header에 Authorization을 추가한다.
-- Basic `Base64(client id:client_secret)`
+  - Basic `Base64(client id:client_secret)`
 
 ```js
-const body2 = "access_token=" + JSON.parse(result).access_token;
 const headers2 = {'content-type' : 'application/x-www-form-urlencoded', 'Authorization': 'Basic dGVzdDoxMjM0'}
-const requestOption2 = {
-        method: 'POST',
-        uri: 'https://www.googleapis.com/oauth2/v1/tokeninfo',
-        headers: headers2,
-        body: body2
-    }
+const body = "code=" + code +
+    "&grant_type=authorization_code" +
+    "&client_id=" + client_id +
+    "&client_secret=" + secret_id +
+    "&redirect_uri=http://localhost:3000/authorize";
+const requestOption = {
+    method: 'POST',
+    uri: 'https://www.googleapis.com/oauth2/v4/token',
+    headers: headers,
+    body: body
+}
 ```
 
 4. Token을 통해 사용자 정보 가져오기
 - 받환받은 Token을 통해 사용자 정보를 가져올수 있다.
+
+4.1 POST 방식
 
 필요한 body, header
 ```js
@@ -80,8 +86,9 @@ const requestOption2 = {
     }
 ```
 
-일반 oauth2 방식
-- GET 요청으로 보낼땐, header에 Authorization을 추가해준다.
+4.2 GET 방식
+- header에 Authorization을 추가해준다.
+  - Bearer `access token`
 
 필요한 body, header
 ```js
